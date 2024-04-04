@@ -1,0 +1,12 @@
+{
+	"OverlayFont": 
+	[
+		{
+			"FontSize" : 16,
+			"FontName" : "Arial",
+			"FontColorR" : 0.8,
+			"FontColorG" : 0.8,
+			"FontColorB" : 0.8
+		}
+	]
+}

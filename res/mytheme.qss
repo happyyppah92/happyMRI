@@ -1,0 +1,344 @@
+/*基础所有的控件*/
+QWidget{
+font-size: 15px;
+font-family: "Tahoma";
+background-color: #000033;
+color:white;
+margin: 0px;
+text-align: left;
+border: 0px solid white;
+}
+
+/*基础所有的控件,带menu*/
+QMainWindow{
+font-size: 15px;
+background-color:  #000033;
+margin: 0px;
+border: 0px solid white;
+}
+
+QMenuBar{
+font-size: 20px;
+font-family: "Tahoma";
+background-color: #000033;
+color:white;
+border-bottom: 0px solid white;
+}
+
+QMenuBar::item:selected {
+    background: #000099;
+}
+
+QMenu{
+font-size: 16px;
+font-family: "Tahoma";
+background-color: #000033;
+color:white;
+border: 1px solid white
+}
+
+QMenu::item:selected {
+    background: #000099;
+}
+
+QMenu::separator {
+    height: 2px;
+    color: white;
+}
+
+QPushButton{
+font-size: 20px;
+font-family: "Tahoma";
+background-color: #000099;
+color:white;
+border: 1px solid white;
+padding-left: 2px;
+padding-right: 2px;
+border-top-left-radius: 2px;
+border-bottom-right-radius: 2px;
+border-top-right-radius: 2px;
+border-bottom-left-radius: 2px;
+}
+
+QPushButton:disabled{
+font-family: "Tahoma";
+color: gray;
+background-color: #000099;
+border: 1px solid gray;
+}
+
+QPushButton:focus{
+outline: none;
+}
+
+/*---------[class="1"]------*/
+QPushButton[class="1"]{
+font-size: 20px;
+font-family: "Tahoma";
+background-color: #000033;
+color:white;
+border: 0px;
+}
+
+
+QStatusBar{
+font-size: 20px;
+font-family: "Tahoma";
+background-color: #000033;
+color:white;
+border: 0px solid white;
+}
+
+QStatusBar::item {
+     border: 0px solid red;
+ }
+
+
+QGraphicsView{
+font-size: 20px;
+background-color: black;
+color:white;
+font-family: "Tahoma";
+border: 1px solid white;
+}
+
+/*-----------------------------*/
+QTabWidget{
+font-size: 20px;
+font-family: "Tahoma";
+margin-top:300px;
+padding-top:300px;
+padding-bottom:30px;
+}
+
+QTabWidget::pane {
+     border: 1px solid white;
+     margin-top: 0px;
+     padding-top:0px;
+     padding-left:0px;
+     padding-right:0px;
+}
+
+QTabWidget::tab-bar {
+alignment: left;
+top: 0px;
+}
+
+/*最外面的tabwidget*/
+/*class="1"为3个大tab*/
+QTabBar[class="1"]{
+font-size: 25px;
+font-style:italic;
+font-weight:600;
+font-family: "Tahoma";
+outline: 0px solid white;
+}
+
+QTabBar[class="1"]::tab {
+font-size: 25px;
+font-family: "Tahoma";
+padding-left: 0px;
+padding-right: 0px;
+padding-top:30px;
+padding-bottom:30px;
+margin-top:10px;
+}
+
+QTabBar[class="1"]::tab:selected {
+margin-right:0px;
+}
+
+QTabBar[class="1"]::tab:!selected {
+margin-right:5px;
+}
+
+/*其他的 参数那里的tab*/
+QTabBar{
+font-size: 15px;
+font-family: "Tahoma";
+outline: 0px solid white;
+}
+
+QTabBar::tab {
+font-size: 15px;
+font-family: "Tahoma";
+padding-left: 10px;
+padding-right: 10px;
+}
+
+QTabBar::tab:selected {
+margin-top:0px;
+}
+
+QTabBar::tab:!selected {
+margin-top:4px;
+}
+
+/*Job Table*/
+QTableView{
+font-size: 15px;
+font-family: "Tahoma";
+background-color: #000033;
+alternate-background-color:#0099ff;
+color:white;
+border: 1px solid white;
+selection-background-color: #000099;
+outline: none;
+}
+
+QTableView::item{
+background-color: #000033;
+}
+QTableView::item::selected{
+background-color: #000099;
+color: white;
+}
+
+QHeaderView{
+background-color: #000033;
+color: white;
+}
+
+QTableView QTableCornerButton::section{
+background-color:#000033;
+}
+
+QHeaderView::section {
+font-family: "Tahoma";
+font-size: 15px;
+background-color:#000033;
+color: white;
+}
+
+QLabel {
+    font-size: 15px;
+    font-family: "Tahoma";
+    border: 0px solid white;
+}
+/*---------[class="1"]------*/
+QLabel[class="1"] {
+    font-size: 20px;
+    font-family: "Tahoma";
+    border: 0px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+QLineEdit{
+font-family: "Tahoma";
+color: white;
+background-color: #000033;
+border: 1px solid white;
+}
+QLineEdit:disabled{
+font-family: "Tahoma";
+color: gray;
+background-color: #000033;
+border: 1px solid gray;
+}
+
+QSpinBox{
+font-family: "Tahoma";
+color: white;
+background-color: #000033;
+border: 1px solid white;
+}
+QSpinBox:disabled{
+font-family: "Tahoma";
+color: gray;
+background-color: #000033;
+border: 1px solid gray;
+}
+
+QComboBox{
+font-family: "Tahoma";
+color: white;
+background-color: #000033;
+border: 1px solid white;
+}
+QComboBox:disabled{
+font-family: "Tahoma";
+color: gray;
+background-color: #000033;
+border: 1px solid gray;
+}
+
+QComboBox QAbstractItemView {
+    border: 1px solid white;
+}
+
+QComboBox QAbstractItemView::item {
+min-height: 20px;
+}
+
+QCheckBox{
+font-family: "Tahoma";
+color: white;
+background-color: #000033;
+border: 0px solid white;
+}
+
+QCheckBox:disabled{
+font-family: "Tahoma";
+color: gray;
+background-color: #000033;
+border: 0px solid gray;
+}
+
+QScrollBar:vertical {
+background: #000000;
+width: 5px;
+margin: 0;
+}
+
+QScrollBar::handle:vertical {
+background: #888;
+}
+
+QScrollBar::handle:hover:vertical {
+  background: #555;
+}
+
+QScrollBar::add-line:vertical {
+height: 0px;
+}
+
+QScrollBar::sub-line:vertical {
+height: 0px;
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+height: 0px;
+background: none;
+}
+
+QScrollBar:horizontal {
+background: #000000;
+height: 5px;
+margin: 0px;
+}
+
+
+QScrollBar::handle:horizontal{
+background: #888;
+}
+
+QScrollBar::handle:hover:horizontal{
+  background: #555;
+}
+
+QScrollBar::add-line:horizontal {
+width: 0px;
+}
+
+QScrollBar::sub-line:horizontal{
+width: 0px;
+}
+
+
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
+height: 0px;
+background: none;
+}
+
+

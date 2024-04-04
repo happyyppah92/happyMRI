@@ -1,0 +1,67 @@
+#MRI ignore
+
+#Qt gen
+ui_*.h
+moc_*.cpp
+
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+*.exp
+
+# Executables
+*.exe
+*.out
+*.app
+*.dll
+
+# Database
+*.sdf
+*.opensdf
+*.db
+*.pdb
+*.opendb
+*.idb
+*.db-wal
+*.db-shm
+
+#bigdata
+*.mri
+*.dcm
+
+#cache
+*.ipch
+*.obj
+*.tlog
+*.log
+*.ilk
+*.stash
+
+
+x64
+GeneratedFiles
+.vs

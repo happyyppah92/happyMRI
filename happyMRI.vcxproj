@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{733D4865-0219-411F-9EF1-05FF5AD35C32}</ProjectGuid>
+    <Keyword>Qt4VSv1.0</Keyword>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup Condition="'$(QtMsBuild)'=='' or !Exists('$(QtMsBuild)\qt.targets')">
+    <QtMsBuild>$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+  </PropertyGroup>
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  </Target>
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">
+    <Import Project="$(QtMsBuild)\qt.props" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\props\myglobal.props" />
+    <Import Project="..\props\myOpenCVd.props" />
+    <Import Project="..\props\VTKandDCMTKd.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\props\myglobal.props" />
+    <Import Project="..\props\myOpenCVr.props" />
+    <Import Project="..\props\VTKandDCMTKr.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(MRIlib-d)</OutDir>
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>$(ProjectName)d</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(MRIlib-r)</OutDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PreprocessorDefinitions>QT_GUI_LIB;QT_WIDGETS_LIB;QT_CORE_LIB;QT_CONCURRENT_LIB;QT_HELP_LIB;QT_OPENGL_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Optimization>Disabled</Optimization>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(MRIinc)core;$(MRIinc)dicomgui;$(MRIinc)myGraphyView;$(MRIinc)myProcess;$(MRIinc);.\;.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;$(QTDIR)\include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtCore;C:\VulkanSDK\1.0.51.0\include;$(QTDIR)\mkspecs\win32-msvc;$(QTDIR)\include\QtPrintSupport;$(QTDIR)\include\QtConcurrent;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <DisableSpecificWarnings>4819;4996</DisableSpecificWarnings>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile />
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <OutputFile>$(MRIbin-d)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>$(MRIlib-d);$(SolutionDir)$(Platform)\$(Configuration)\;$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>cored.lib;dicomViewerd.lib;myProcessd.lib;myGraphyViewd.lib;$(QTDIR)\lib\Qt5Widgetsd.lib;$(QTDIR)\lib\Qt5Guid.lib;$(QTDIR)\lib\Qt5Xmld.lib;$(QTDIR)\lib\Qt5Cored.lib;$(QTDIR)\lib\qtmaind.lib;Qt5PrintSupportd.lib;Qt5Concurrentd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <QtMoc>
+      <Define>QT_GUI_LIB;QT_WIDGETS_LIB;QT_CORE_LIB;QT_CONCURRENT_LIB;QT_HELP_LIB;QT_OPENGL_LIB;%(PreprocessorDefinitions)</Define>
+      <IncludePath>$(SolutionDir)happyMRI\ViewerMain;.\;$(SolutionDir)gui\GeneratedFiles;$(SolutionDir)core;$(SolutionDir)global;$(SolutionDir);.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;$(QTDIR)\include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtCore;C:\VulkanSDK\1.0.51.0\include;$(QTDIR)\mkspecs\win32-msvc;$(QTDIR)\include\QtPrintSupport;$(QTDIR)\include\QtConcurrent;%(AdditionalIncludeDirectories)</IncludePath>
+      <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
+      <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
+      <ForceInclude>
+      </ForceInclude>
+    </QtMoc>
+    <QtUic>
+      <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
+      <OutputFile>.\GeneratedFiles\ui_%(Filename).h</OutputFile>
+    </QtUic>
+    <QtRcc>
+      <ExecutionDescription>Rcc'ing %(Identity)...</ExecutionDescription>
+      <OutputFile>.\GeneratedFiles\qrc_%(Filename).cpp</OutputFile>
+    </QtRcc>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PreprocessorDefinitions>WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DebugInformationFormat />
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(MRIinc)core;$(MRIinc)dicomgui;$(MRIinc)myGraphyView;$(MRIinc)myProcess;$(MRIinc);$(ProjectDir)ViewerMain;.\;.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;$(QTDIR)\include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtCore;C:\VulkanSDK\1.0.51.0\include;$(QTDIR)\mkspecs\win32-msvc;$(QTDIR)\include\QtPrintSupport;$(QTDIR)\include\QtConcurrent;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <DisableSpecificWarnings>4819;4996</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <OutputFile>$(MRIbin-r)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>$(MRIlib-r);$(SolutionDir)$(Platform)\$(Configuration)\;$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <AdditionalDependencies>core.lib;dicomViewer.lib;myProcess.lib;myGraphyView.lib;$(QTDIR)\lib\Qt5Widgets.lib;$(QTDIR)\lib\Qt5Gui.lib;$(QTDIR)\lib\Qt5Xml.lib;$(QTDIR)\lib\Qt5Core.lib;$(QTDIR)\lib\qtmain.lib;Qt5PrintSupport.lib;Qt5Concurrent.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <QtMoc>
+      <Define>WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;%(PreprocessorDefinitions)</Define>
+      <IncludePath>$(SolutionDir)happyMRI\ViewerMain;.\;$(SolutionDir)gui\GeneratedFiles;$(SolutionDir)core;$(SolutionDir)global;$(SolutionDir);.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;$(QTDIR)\include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtCore;C:\VulkanSDK\1.0.51.0\include;$(QTDIR)\mkspecs\win32-msvc;$(QTDIR)\include\QtPrintSupport;$(QTDIR)\include\QtConcurrent;%(AdditionalIncludeDirectories)</IncludePath>
+      <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
+      <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
+    </QtMoc>
+    <QtUic>
+      <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
+      <OutputFile>.\GeneratedFiles\ui_%(Filename).h</OutputFile>
+    </QtUic>
+    <QtRcc>
+      <ExecutionDescription>Rcc'ing %(Identity)...</ExecutionDescription>
+      <OutputFile>.\GeneratedFiles\qrc_%(Filename).cpp</OutputFile>
+    </QtRcc>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="dataMode.cpp" />
+    <ClCompile Include="kspacepara.cpp" />
+    <ClCompile Include="MainFrame\aboutDialog.cpp" />
+    <ClCompile Include="MainFrame\main.cpp" />
+    <ClCompile Include="MainFrame\mainTableWidget.cpp" />
+    <ClCompile Include="MainFrame\mainWindow.cpp" />
+    <ClCompile Include="myfileopen.cpp" />
+    <ClCompile Include="myJobItem.cpp" />
+    <ClCompile Include="myKspaceView.cpp" />
+    <ClCompile Include="myRoitableview.cpp" />
+    <ClCompile Include="mySECurve.cpp" />
+    <ClCompile Include="other\qcustomplot.cpp" />
+    <ClCompile Include="physicpara.cpp" />
+    <ClCompile Include="ViewerMain\myHistgram.cpp" />
+    <ClCompile Include="ViewerMain\mySequenceView.cpp" />
+    <ClCompile Include="ViewerMain\mytableview.cpp" />
+    <ClCompile Include="ViewerMain\newAcquiretab.cpp" />
+    <ClCompile Include="ViewerMain\newKspaceTab.cpp" />
+    <ClCompile Include="ViewerMain\newPhysicsTab.cpp" />
+    <ClCompile Include="ViewerMain\newViewertab.cpp" />
+    <ClCompile Include="ViewerMain\paraControl.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="MainFrame\aboutDialog.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="kspacepara.ui" />
+    <QtUic Include="MainFrame\aboutdialog.ui">
+      <FileType>Document</FileType>
+    </QtUic>
+    <QtUic Include="physicpara.ui" />
+    <QtUic Include="ViewerMain\mysequencediag.ui" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="MainFrame\mainTableWidget.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="MainFrame\mainWindow.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="kspacepara.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.;$(SolutionDir)gui\GeneratedFiles;$(SolutionDir)core;$(SolutionDir)global;$(SolutionDir)\.;.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;$(QTDIR)\include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtCore;C:\VulkanSDK\1.0.51.0\include;$(QTDIR)\mkspecs\win32-msvc;$(QTDIR)\include\QtPrintSupport;$(QTDIR)\include\QtConcurrent;D:\Program Files\DICOM\include;D:\Program Files\VTK\include\vtk-8.2;D:\Program Files\DCMTK\include</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">QT_GUI_LIB;QT_WIDGETS_LIB;QT_CORE_LIB;QT_CONCURRENT_LIB;QT_HELP_LIB;QT_OPENGL_LIB;_MBCS</Define>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.;$(SolutionDir)gui\GeneratedFiles;$(SolutionDir)core;$(SolutionDir)global;$(SolutionDir)\.;.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;$(QTDIR)\include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtCore;C:\VulkanSDK\1.0.51.0\include;$(QTDIR)\mkspecs\win32-msvc;$(QTDIR)\include\QtPrintSupport;$(QTDIR)\include\QtConcurrent;D:\Program Files\DICOM\include;D:\Program Files\VTK\include\vtk-8.2;D:\Program Files\DCMTK\include</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;_MBCS</Define>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="dataMode.h" />
+    <ClInclude Include="myfileopen.h" />
+    <ClInclude Include="myJobItem.h" />
+    <ClInclude Include="myRoitableview.h" />
+    <QtMoc Include="ViewerMain\newViewertab.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(MRIinc)core;$(MRIinc)dicomgui;$(MRIinc)myGraphyView;$(MRIinc)myProcess;$(MRIinc);.;$(happyMRI)dlldicomgui\GeneratedFiles\Debug;.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;$(QTDIR)\include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtCore;C:\VulkanSDK\1.0.51.0\include;$(QTDIR)\mkspecs\win32-msvc;$(QTDIR)\include\QtPrintSupport;$(QTDIR)\include\QtConcurrent;D:\Program Files\DICOM\include;D:\Program Files\VTK\include\vtk-8.2;D:\Program Files\DCMTK\include</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">E:\happyMRI\dlldicomgui\GeneratedFiles\Release;$(MRIinc)core;$(MRIinc)dicomgui;$(MRIinc)myGraphyView;$(MRIinc)myProcess;$(MRIinc);$(ProjectDir)ViewerMain;.;.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;$(QTDIR)\include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtCore;C:\VulkanSDK\1.0.51.0\include;$(QTDIR)\mkspecs\win32-msvc;$(QTDIR)\include\QtPrintSupport;$(QTDIR)\include\QtConcurrent;D:\Program Files\DICOM\include;D:\Program Files\VTK\include\vtk-8.2;D:\Program Files\DCMTK\include</IncludePath>
+    </QtMoc>
+    <QtMoc Include="other\qcustomplot.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(happyMRI)dlldicomgui\GeneratedFiles\Debug;$(happyMRI)dllcore;$(happyMRI)dlldicomgui;$(happyMRI)dllmyGraphyView;$(happyMRI)dllgui;$(happyMRI)dllmyProcess;$(happyMRI)global;.;.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;$(QTDIR)\include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtCore;C:\VulkanSDK\1.0.51.0\include;$(QTDIR)\mkspecs\win32-msvc;$(QTDIR)\include\QtPrintSupport;$(QTDIR)\include\QtConcurrent;D:\Program Files\DICOM\include;D:\Program Files\VTK\include\vtk-8.2;D:\Program Files\DCMTK\include</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)happyMRI\ViewerMain;.;$(SolutionDir)gui\GeneratedFiles;$(SolutionDir)core;$(SolutionDir)global;$(SolutionDir);.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;$(QTDIR)\include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtCore;C:\VulkanSDK\1.0.51.0\include;$(QTDIR)\mkspecs\win32-msvc;$(QTDIR)\include\QtPrintSupport;$(QTDIR)\include\QtConcurrent</IncludePath>
+    </QtMoc>
+    <ClInclude Include="ViewerMain\mytableview.h" />
+    <QtMoc Include="ViewerMain\newPhysicsTab.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(happyMRI)dlldicomgui\GeneratedFiles\Debug;$(happyMRI)dllcore;$(happyMRI)dlldicomgui;$(happyMRI)dllmyGraphyView;$(happyMRI)dllgui;$(happyMRI)dllmyProcess;$(happyMRI)global;.;.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;$(QTDIR)\include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtCore;C:\VulkanSDK\1.0.51.0\include;$(QTDIR)\mkspecs\win32-msvc;$(QTDIR)\include\QtPrintSupport;$(QTDIR)\include\QtConcurrent;D:\Program Files\DICOM\include;D:\Program Files\VTK\include\vtk-8.2;D:\Program Files\DCMTK\include</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)happyMRI\ViewerMain;.;$(SolutionDir)gui\GeneratedFiles;$(SolutionDir)core;$(SolutionDir)global;$(SolutionDir);.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;$(QTDIR)\include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtCore;C:\VulkanSDK\1.0.51.0\include;$(QTDIR)\mkspecs\win32-msvc;$(QTDIR)\include\QtPrintSupport;$(QTDIR)\include\QtConcurrent</IncludePath>
+    </QtMoc>
+    <QtMoc Include="ViewerMain\paraControl.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.;$(SolutionDir)gui\GeneratedFiles;$(SolutionDir)core;$(SolutionDir)global;$(SolutionDir)\.;.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;$(QTDIR)\include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtCore;C:\VulkanSDK\1.0.51.0\include;$(QTDIR)\mkspecs\win32-msvc;$(QTDIR)\include\QtPrintSupport;$(QTDIR)\include\QtConcurrent;D:\Program Files\DICOM\include;D:\Program Files\VTK\include\vtk-8.2;D:\Program Files\DCMTK\include</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">QT_GUI_LIB;QT_WIDGETS_LIB;QT_CORE_LIB;QT_CONCURRENT_LIB;QT_HELP_LIB;QT_OPENGL_LIB;_MBCS</Define>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.;$(SolutionDir)gui\GeneratedFiles;$(SolutionDir)core;$(SolutionDir)global;$(SolutionDir)\.;.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;$(QTDIR)\include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtCore;C:\VulkanSDK\1.0.51.0\include;$(QTDIR)\mkspecs\win32-msvc;$(QTDIR)\include\QtPrintSupport;$(QTDIR)\include\QtConcurrent;D:\Program Files\DICOM\include;D:\Program Files\VTK\include\vtk-8.2;D:\Program Files\DCMTK\include</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;_MBCS</Define>
+    </QtMoc>
+    <QtMoc Include="ViewerMain\newKspaceTab.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.;$(SolutionDir)gui\GeneratedFiles;$(SolutionDir)core;$(SolutionDir)global;$(SolutionDir)\.;.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;$(QTDIR)\include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtCore;C:\VulkanSDK\1.0.51.0\include;$(QTDIR)\mkspecs\win32-msvc;$(QTDIR)\include\QtPrintSupport;$(QTDIR)\include\QtConcurrent;D:\Program Files\DICOM\include;D:\Program Files\VTK\include\vtk-8.2;D:\Program Files\DCMTK\include</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">QT_GUI_LIB;QT_WIDGETS_LIB;QT_CORE_LIB;QT_CONCURRENT_LIB;QT_HELP_LIB;QT_OPENGL_LIB;_MBCS</Define>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.;$(SolutionDir)gui\GeneratedFiles;$(SolutionDir)core;$(SolutionDir)global;$(SolutionDir)\.;.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;$(QTDIR)\include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtCore;C:\VulkanSDK\1.0.51.0\include;$(QTDIR)\mkspecs\win32-msvc;$(QTDIR)\include\QtPrintSupport;$(QTDIR)\include\QtConcurrent;D:\Program Files\DICOM\include;D:\Program Files\VTK\include\vtk-8.2;D:\Program Files\DCMTK\include</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;_MBCS</Define>
+    </QtMoc>
+    <QtMoc Include="ViewerMain\newAcquiretab.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.;$(SolutionDir)gui\GeneratedFiles;$(SolutionDir)core;$(SolutionDir)global;$(SolutionDir)\.;.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;$(QTDIR)\include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtCore;C:\VulkanSDK\1.0.51.0\include;$(QTDIR)\mkspecs\win32-msvc;$(QTDIR)\include\QtPrintSupport;$(QTDIR)\include\QtConcurrent;D:\Program Files\DICOM\include;D:\Program Files\VTK\include\vtk-8.2;D:\Program Files\DCMTK\include</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">QT_GUI_LIB;QT_WIDGETS_LIB;QT_CORE_LIB;QT_CONCURRENT_LIB;QT_HELP_LIB;QT_OPENGL_LIB;_MBCS</Define>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.;$(SolutionDir)gui\GeneratedFiles;$(SolutionDir)core;$(SolutionDir)global;$(SolutionDir)\.;.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;$(QTDIR)\include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtCore;C:\VulkanSDK\1.0.51.0\include;$(QTDIR)\mkspecs\win32-msvc;$(QTDIR)\include\QtPrintSupport;$(QTDIR)\include\QtConcurrent;D:\Program Files\DICOM\include;D:\Program Files\VTK\include\vtk-8.2;D:\Program Files\DCMTK\include</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;_MBCS</Define>
+    </QtMoc>
+    <QtMoc Include="ViewerMain\mySequenceView.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.;$(SolutionDir)gui\GeneratedFiles;$(SolutionDir)core;$(SolutionDir)global;$(SolutionDir)\.;.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;$(QTDIR)\include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtCore;C:\VulkanSDK\1.0.51.0\include;$(QTDIR)\mkspecs\win32-msvc;$(QTDIR)\include\QtPrintSupport;$(QTDIR)\include\QtConcurrent;D:\Program Files\DICOM\include;D:\Program Files\VTK\include\vtk-8.2;D:\Program Files\DCMTK\include</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">QT_GUI_LIB;QT_WIDGETS_LIB;QT_CORE_LIB;QT_CONCURRENT_LIB;QT_HELP_LIB;QT_OPENGL_LIB;_MBCS</Define>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.;$(SolutionDir)gui\GeneratedFiles;$(SolutionDir)core;$(SolutionDir)global;$(SolutionDir)\.;.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;$(QTDIR)\include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtCore;C:\VulkanSDK\1.0.51.0\include;$(QTDIR)\mkspecs\win32-msvc;$(QTDIR)\include\QtPrintSupport;$(QTDIR)\include\QtConcurrent;D:\Program Files\DICOM\include;D:\Program Files\VTK\include\vtk-8.2;D:\Program Files\DCMTK\include</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;_MBCS</Define>
+    </QtMoc>
+    <QtMoc Include="ViewerMain\myHistgram.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.;$(SolutionDir)gui\GeneratedFiles;$(SolutionDir)core;$(SolutionDir)global;$(SolutionDir)\.;.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;$(QTDIR)\include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtCore;C:\VulkanSDK\1.0.51.0\include;$(QTDIR)\mkspecs\win32-msvc;$(QTDIR)\include\QtPrintSupport;$(QTDIR)\include\QtConcurrent;D:\Program Files\DICOM\include;D:\Program Files\VTK\include\vtk-8.2;D:\Program Files\DCMTK\include</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">QT_GUI_LIB;QT_WIDGETS_LIB;QT_CORE_LIB;QT_CONCURRENT_LIB;QT_HELP_LIB;QT_OPENGL_LIB;_MBCS</Define>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.;$(SolutionDir)gui\GeneratedFiles;$(SolutionDir)core;$(SolutionDir)global;$(SolutionDir)\.;.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;$(QTDIR)\include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtCore;C:\VulkanSDK\1.0.51.0\include;$(QTDIR)\mkspecs\win32-msvc;$(QTDIR)\include\QtPrintSupport;$(QTDIR)\include\QtConcurrent;D:\Program Files\DICOM\include;D:\Program Files\VTK\include\vtk-8.2;D:\Program Files\DCMTK\include</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;_MBCS</Define>
+    </QtMoc>
+    <QtMoc Include="physicpara.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.;$(SolutionDir)gui\GeneratedFiles;$(SolutionDir)core;$(SolutionDir)global;$(SolutionDir)\.;.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;$(QTDIR)\include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtCore;C:\VulkanSDK\1.0.51.0\include;$(QTDIR)\mkspecs\win32-msvc;$(QTDIR)\include\QtPrintSupport;$(QTDIR)\include\QtConcurrent;D:\Program Files\DICOM\include;D:\Program Files\VTK\include\vtk-8.2;D:\Program Files\DCMTK\include</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">QT_GUI_LIB;QT_WIDGETS_LIB;QT_CORE_LIB;QT_CONCURRENT_LIB;QT_HELP_LIB;QT_OPENGL_LIB;_MBCS</Define>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.;$(SolutionDir)gui\GeneratedFiles;$(SolutionDir)core;$(SolutionDir)global;$(SolutionDir)\.;.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;$(QTDIR)\include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtCore;C:\VulkanSDK\1.0.51.0\include;$(QTDIR)\mkspecs\win32-msvc;$(QTDIR)\include\QtPrintSupport;$(QTDIR)\include\QtConcurrent;D:\Program Files\DICOM\include;D:\Program Files\VTK\include\vtk-8.2;D:\Program Files\DCMTK\include</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;_MBCS</Define>
+    </QtMoc>
+    <QtMoc Include="mySECurve.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.;$(SolutionDir)gui\GeneratedFiles;$(SolutionDir)core;$(SolutionDir)global;$(SolutionDir)\.;.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;$(QTDIR)\include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtCore;C:\VulkanSDK\1.0.51.0\include;$(QTDIR)\mkspecs\win32-msvc;$(QTDIR)\include\QtPrintSupport;$(QTDIR)\include\QtConcurrent;D:\Program Files\DICOM\include;D:\Program Files\VTK\include\vtk-8.2;D:\Program Files\DCMTK\include</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">QT_GUI_LIB;QT_WIDGETS_LIB;QT_CORE_LIB;QT_CONCURRENT_LIB;QT_HELP_LIB;QT_OPENGL_LIB;_MBCS</Define>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.;$(SolutionDir)gui\GeneratedFiles;$(SolutionDir)core;$(SolutionDir)global;$(SolutionDir)\.;.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;$(QTDIR)\include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtCore;C:\VulkanSDK\1.0.51.0\include;$(QTDIR)\mkspecs\win32-msvc;$(QTDIR)\include\QtPrintSupport;$(QTDIR)\include\QtConcurrent;D:\Program Files\DICOM\include;D:\Program Files\VTK\include\vtk-8.2;D:\Program Files\DCMTK\include</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;_MBCS</Define>
+    </QtMoc>
+    <QtMoc Include="myKspaceView.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.;$(SolutionDir)gui\GeneratedFiles;$(SolutionDir)core;$(SolutionDir)global;$(SolutionDir)\.;.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;$(QTDIR)\include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtCore;C:\VulkanSDK\1.0.51.0\include;$(QTDIR)\mkspecs\win32-msvc;$(QTDIR)\include\QtPrintSupport;$(QTDIR)\include\QtConcurrent;D:\Program Files\DICOM\include;D:\Program Files\VTK\include\vtk-8.2;D:\Program Files\DCMTK\include</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">QT_GUI_LIB;QT_WIDGETS_LIB;QT_CORE_LIB;QT_CONCURRENT_LIB;QT_HELP_LIB;QT_OPENGL_LIB;_MBCS</Define>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.;$(SolutionDir)gui\GeneratedFiles;$(SolutionDir)core;$(SolutionDir)global;$(SolutionDir)\.;.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;$(QTDIR)\include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtXml;$(QTDIR)\include\QtCore;C:\VulkanSDK\1.0.51.0\include;$(QTDIR)\mkspecs\win32-msvc;$(QTDIR)\include\QtPrintSupport;$(QTDIR)\include\QtConcurrent;D:\Program Files\DICOM\include;D:\Program Files\VTK\include\vtk-8.2;D:\Program Files\DCMTK\include</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;_MBCS</Define>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="DicomTeaching.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="DicomTeaching.qrc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\dicom.ico">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </Image>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
+    <Import Project="$(QtMsBuild)\qt.targets" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties MocDir=".\GeneratedFiles\$(ConfigurationName)" UicDir=".\GeneratedFiles" RccDir=".\GeneratedFiles" lupdateOptions="" lupdateOnBuild="0" lreleaseOptions="" Qt5Version_x0020_x64="Qt5.12.2" MocOptions="" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
