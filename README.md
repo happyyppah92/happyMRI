@@ -1,4 +1,6 @@
+
 # 0,description
+![image](Resources/readme.png)
 A MRI simulation software for teaching, especially for undergraduates or beginners
 
 1. **Easy to learn and use**: For beginners, magnetic resonance simulation software should have a clear user interface and easy-to-understand operation process. This can help them grasp the use of the software faster.
